@@ -3,7 +3,7 @@
   "id": "nlp_misc",
   "description": "",
   "created_on": "19/04/2023, 10:28:52",
-  "last_modify": "11/05/2023, 10:24:01",
+  "last_modify": "23/05/2023, 08:10:32",
   "graphs": {
     "main": {
       "nodes": [
@@ -126,113 +126,6 @@
           "__class__": "Node"
         },
         {
-          "id": "118b7c03-9d6b-41c9-9ebd-777500d55d8e",
-          "position": {
-            "x": 701,
-            "y": -139
-          },
-          "type": "custom",
-          "dragHandle": "#nodeHandle",
-          "sourcePosition": "right",
-          "targetPosition": "left",
-          "width": 150,
-          "height": 56,
-          "selected": false,
-          "dragging": false,
-          "data": {
-            "pname": "anonymizer_spacy",
-            "name": "TextAnonymizer",
-            "events": null,
-            "description": "### Description\n**Anonymizer** component  masks text basing on a token-classification model. You can find the list of available models \n here: https://github.com/explosion/spacy-models.\n\n### Configuration\n\n- **keep** is used to set which kind of entities you don't want to anonymize.\n\nHere you can find the list of available categories:\n```\n'CARDINAL', 'DATE', 'EVENT', 'FAC', 'GPE', 'LANGUAGE', 'LAW', 'LOC', 'MONEY', 'NORP', 'ORDINAL', 'ORG', 'PER', \n'PERCENT', 'PRODUCT', 'QUANTITY', 'TIME', 'WORK_OF_ART'\n``` \n\n- **entities** allows to visualize the extracted entities.\n\n### Input\nThe component accepts text in input.\n\n### Output\nThe output is the masked text if parameter **entities** is set to False. Otherwise, it returns a dictionary containing \nalso the extracted entities associated to the text tokenization:\n\n```\n{\n  \"anonymized_text\": \"Mi chiamo ****** e vivo a ****** .\",\n  \"entities\": [\n    {\n      \"end\": 3,\n      \"label\": \"PER\",\n      \"start\": 2,\n      \"text\": \"Mario\"\n    },\n    {\n      \"end\": 7,\n      \"label\": \"GPE\",\n      \"start\": 6,\n      \"text\": \"Roma\"\n    }\n  ],\n  \"tokens\": [\n    \"Mi\",\n    \"chiamo\",\n    \"Mario\",\n    \"e\",\n    \"vivo\",\n    \"a\",\n    \"Roma\",\n    \".\"\n  ]\n}\n```\n",
-            "inputs": [
-              {
-                "id": "text",
-                "label": "text",
-                "service": "anonymize",
-                "to": "output"
-              }
-            ],
-            "outputs": [
-              {
-                "id": "output",
-                "label": "output"
-              }
-            ],
-            "configured": true,
-            "options": {
-              "group": "Custom",
-              "args": [
-                {
-                  "name": "comment",
-                  "type": "area",
-                  "label": "Node comment",
-                  "helper": "Use it to explain the usage of this node"
-                },
-                {
-                  "name": "alias",
-                  "type": "text",
-                  "label": "Name",
-                  "helper": "Use this name as an alias"
-                },
-                {
-                  "name": "debug",
-                  "type": "boolean",
-                  "label": "Debug to Console",
-                  "divider": true
-                },
-                {
-                  "name": "model",
-                  "type": "text",
-                  "label": "model",
-                  "helper": "The name of the token-classification model you want to use.",
-                  "group": "",
-                  "value": "en_core_web_trf",
-                  "description": "",
-                  "validation": null
-                },
-                {
-                  "name": "keep",
-                  "type": "text",
-                  "label": "keep",
-                  "helper": "",
-                  "group": "",
-                  "value": null,
-                  "description": "Don't anonymize these entity types. One of 'CARDINAL', 'DATE', 'EVENT', 'FAC', 'GPE', 'LANGUAGE', 'LAW', 'LOC', 'MONEY', 'NORP', 'ORDINAL', 'ORG', 'PER', 'PERCENT', 'PRODUCT', 'QUANTITY', 'TIME', 'WORK_OF_ART'. Comma separated",
-                  "validation": null
-                },
-                {
-                  "name": "entities",
-                  "type": "boolean",
-                  "label": "entities",
-                  "helper": "",
-                  "group": "",
-                  "value": null,
-                  "description": "Returns also extracted entities",
-                  "validation": null
-                }
-              ],
-              "click": null,
-              "icon": "RiFileLockLine",
-              "values": {
-                "comment": "",
-                "alias": "",
-                "debug": false,
-                "model": "en_core_web_trf",
-                "keep": "",
-                "entities": true
-              }
-            },
-            "locked": null
-          },
-          "selectable": true,
-          "draggable": true,
-          "positionAbsolute": {
-            "x": 701,
-            "y": -139
-          },
-          "__class__": "Node"
-        },
-        {
           "id": "8636e160-416a-4010-812e-49a61f09e779",
           "position": {
             "x": 715,
@@ -320,8 +213,8 @@
                 "comment": "",
                 "alias": "",
                 "debug": false,
-                "source": "en",
-                "target": "it"
+                "source": "it",
+                "target": "en"
               }
             },
             "locked": null
@@ -537,11 +430,11 @@
                 "comment": "",
                 "alias": "",
                 "debug": false,
-                "model": "gpt2",
-                "max_length": "100",
+                "model": "GroNLP/gpt2-small-italian",
+                "max_length": "50",
                 "ngram_size": "2",
                 "do_sample": true,
-                "temperature": "0.3"
+                "temperature": ".8"
               }
             },
             "locked": null
@@ -578,7 +471,8 @@
                 "id": "insert",
                 "label": "insert",
                 "service": "",
-                "to": "output"
+                "to": "output",
+                "closed": false
               },
               {
                 "id": "query",
@@ -675,8 +569,8 @@
         {
           "id": "047ff3c4-74da-4f86-b691-35b5b33c3c98",
           "position": {
-            "x": 926,
-            "y": 404
+            "x": 668.496676356481,
+            "y": 487.1763794924234
           },
           "type": "custom",
           "dragHandle": "#nodeHandle",
@@ -785,16 +679,16 @@
           "selectable": true,
           "draggable": true,
           "positionAbsolute": {
-            "x": 926,
-            "y": 404
+            "x": 668.496676356481,
+            "y": 487.1763794924234
           },
           "__class__": "Node"
         },
         {
           "id": "12b54265-cd70-4c02-bf11-3da99ca4f191",
           "position": {
-            "x": 464,
-            "y": 429.0029602050781
+            "x": 206.49667635648098,
+            "y": 512.1793396975015
           },
           "type": "custom",
           "dragHandle": "#nodeHandle",
@@ -857,16 +751,16 @@
           "selectable": true,
           "draggable": true,
           "positionAbsolute": {
-            "x": 464,
-            "y": 429.0029602050781
+            "x": 206.49667635648098,
+            "y": 512.1793396975015
           },
           "__class__": "Node"
         },
         {
           "id": "7cc7a107-0934-4571-a3a5-152fe0335960",
           "position": {
-            "x": 693,
-            "y": 447.0029602050781
+            "x": 435.496676356481,
+            "y": 530.1793396975015
           },
           "type": "custom",
           "dragHandle": "#nodeHandle",
@@ -954,16 +848,16 @@
           "selectable": true,
           "draggable": true,
           "positionAbsolute": {
-            "x": 693,
-            "y": 447.0029602050781
+            "x": 435.496676356481,
+            "y": 530.1793396975015
           },
           "__class__": "Node"
         },
         {
           "id": "fbaef0c9-d9c8-4efd-8424-c3ce8454964b",
           "position": {
-            "x": 1152,
-            "y": 412.0029602050781
+            "x": 894.496676356481,
+            "y": 495.1793396975015
           },
           "type": "custom",
           "dragHandle": "#nodeHandle",
@@ -1033,8 +927,8 @@
           "selectable": true,
           "draggable": true,
           "positionAbsolute": {
-            "x": 1152,
-            "y": 412.0029602050781
+            "x": 894.496676356481,
+            "y": 495.1793396975015
           },
           "__class__": "Node"
         },
@@ -1255,23 +1149,157 @@
             "y": 10.002960205078125
           },
           "__class__": "Node"
+        },
+        {
+          "id": "c484a27d-56bd-4137-b2d7-2f01c5150a1c",
+          "position": {
+            "x": 153,
+            "y": -181.99703979492188
+          },
+          "type": "comment",
+          "dragHandle": "#commentHandle",
+          "sourcePosition": "right",
+          "targetPosition": "left",
+          "width": 1264,
+          "height": 447,
+          "selected": false,
+          "dragging": false,
+          "data": {
+            "comment": "STEP1: NLP and ingestion",
+            "fill": "#577590",
+            "height": 447,
+            "width": 1264
+          },
+          "zIndex": -1,
+          "selectable": false,
+          "connectable": false,
+          "positionAbsolute": {
+            "x": 153,
+            "y": -181.99703979492188
+          },
+          "__class__": "Node"
+        },
+        {
+          "id": "53d59b5a-c0d8-483e-9101-f07e8e969719",
+          "position": {
+            "x": 160.63394644107706,
+            "y": 392.05536418698136
+          },
+          "type": "comment",
+          "dragHandle": "#commentHandle",
+          "sourcePosition": "right",
+          "targetPosition": "left",
+          "width": 925,
+          "height": 241,
+          "selected": false,
+          "dragging": false,
+          "data": {
+            "comment": "STEP2: Read results",
+            "fill": "#577590",
+            "height": 241,
+            "width": 925
+          },
+          "zIndex": -1,
+          "selectable": false,
+          "connectable": false,
+          "positionAbsolute": {
+            "x": 160.63394644107706,
+            "y": 392.05536418698136
+          },
+          "__class__": "Node"
+        },
+        {
+          "id": "299d2c07-7888-4383-a9b9-84b7520783c2",
+          "position": {
+            "x": 725,
+            "y": -131
+          },
+          "type": "custom",
+          "dragHandle": "#nodeHandle",
+          "sourcePosition": "right",
+          "targetPosition": "left",
+          "width": 150,
+          "height": 56,
+          "selected": false,
+          "dragging": false,
+          "data": {
+            "pname": "loko_anonymizer",
+            "name": "Anonymizer",
+            "events": null,
+            "description": "### Description\n**Anonymizer** component  masks text basing on the extracted entities by the **it_nerIta_trf model**.\n\n### Configuration\n\n- **keep** is used to set which kind of entities you don't want to anonymize.\n\nHere you can find the list of available categories:\n```\n'CARDINAL', 'DATE', 'EVENT', 'FAC', 'GPE', 'LANGUAGE', 'LAW', 'LOC', 'MONEY', 'NORP', 'ORDINAL', 'ORG', 'PER', \n'PERCENT', 'PRODUCT', 'QUANTITY', 'TIME', 'WORK_OF_ART'\n``` \n\n- **entities** allows to visualize the extracted entities.\n\n### Input\nThe component accepts text in input.\n\n### Output\nThe output is the masked text if parameter **entities** is set to False. Otherwise, it returns a dictionary containing \nalso the extracted entities associated to the text tokenization:\n\n```\n{\n  \"anonymized_text\": \"Mi chiamo ****** e vivo a ****** .\",\n  \"entities\": [\n    {\n      \"end\": 3,\n      \"label\": \"PER\",\n      \"start\": 2,\n      \"text\": \"Mario\"\n    },\n    {\n      \"end\": 7,\n      \"label\": \"GPE\",\n      \"start\": 6,\n      \"text\": \"Roma\"\n    }\n  ],\n  \"tokens\": [\n    \"Mi\",\n    \"chiamo\",\n    \"Mario\",\n    \"e\",\n    \"vivo\",\n    \"a\",\n    \"Roma\",\n    \".\"\n  ]\n}\n```\n",
+            "inputs": [
+              {
+                "id": "text",
+                "label": "text",
+                "service": "anonymize",
+                "to": "output"
+              }
+            ],
+            "outputs": [
+              {
+                "id": "output",
+                "label": "output"
+              }
+            ],
+            "configured": true,
+            "options": {
+              "group": "Custom",
+              "args": [
+                {
+                  "name": "comment",
+                  "type": "area",
+                  "label": "Node comment",
+                  "helper": "Use it to explain the usage of this node"
+                },
+                {
+                  "name": "alias",
+                  "type": "text",
+                  "label": "Name",
+                  "helper": "Use this name as an alias"
+                },
+                {
+                  "name": "debug",
+                  "type": "boolean",
+                  "label": "Debug to Console",
+                  "divider": true
+                },
+                {
+                  "name": "keep",
+                  "type": "text",
+                  "label": "keep",
+                  "helper": "",
+                  "group": "",
+                  "value": null,
+                  "description": "Don't anonymize these entity types. One of 'CARDINAL', 'DATE', 'EVENT', 'FAC', 'GPE', 'LANGUAGE', 'LAW', 'LOC', 'MONEY', 'NORP', 'ORDINAL', 'ORG', 'PER', 'PERCENT', 'PRODUCT', 'QUANTITY', 'TIME', 'WORK_OF_ART'. Comma separated",
+                  "validation": null
+                },
+                {
+                  "name": "entities",
+                  "type": "boolean",
+                  "label": "entities",
+                  "helper": "",
+                  "group": "",
+                  "value": null,
+                  "description": "Returns also extracted entities",
+                  "validation": null
+                }
+              ],
+              "click": null,
+              "icon": "RiFileLockLine",
+              "values": {}
+            },
+            "locked": null
+          },
+          "selectable": true,
+          "draggable": true,
+          "positionAbsolute": {
+            "x": 725,
+            "y": -131
+          },
+          "__class__": "Node"
         }
       ],
       "edges": [
-        {
-          "id": "reactflow__edge-118b7c03-9d6b-41c9-9ebd-777500d55d8eoutput-f3291447-18f3-4214-b135-9878a5d3bc2dc9f9e9d7-91c7-4a6d-8bc2-9975975578f6",
-          "source": "118b7c03-9d6b-41c9-9ebd-777500d55d8e",
-          "sourceHandle": "output",
-          "target": "f3291447-18f3-4214-b135-9878a5d3bc2d",
-          "targetHandle": "c9f9e9d7-91c7-4a6d-8bc2-9975975578f6",
-          "data": {
-            "startColor": "#888",
-            "stopColor": "#D770AD"
-          },
-          "selected": false,
-          "dragging": false,
-          "__class__": "Edge"
-        },
         {
           "id": "reactflow__edge-8636e160-416a-4010-812e-49a61f09e779output-f3291447-18f3-4214-b135-9878a5d3bc2d8a0b486f-373e-43a2-b93e-f053addd747f",
           "source": "8636e160-416a-4010-812e-49a61f09e779",
@@ -1427,10 +1455,10 @@
           "__class__": "Edge"
         },
         {
-          "id": "reactflow__edge-ccaacdbf-45f4-45ca-ac15-f872fe1b970doutput-118b7c03-9d6b-41c9-9ebd-777500d55d8etext",
+          "id": "reactflow__edge-ccaacdbf-45f4-45ca-ac15-f872fe1b970doutput-299d2c07-7888-4383-a9b9-84b7520783c2text",
           "source": "ccaacdbf-45f4-45ca-ac15-f872fe1b970d",
           "sourceHandle": "output",
-          "target": "118b7c03-9d6b-41c9-9ebd-777500d55d8e",
+          "target": "299d2c07-7888-4383-a9b9-84b7520783c2",
           "targetHandle": "text",
           "data": {
             "startColor": "#D770AD",
@@ -1438,6 +1466,18 @@
           },
           "selected": false,
           "dragging": false,
+          "__class__": "Edge"
+        },
+        {
+          "id": "reactflow__edge-299d2c07-7888-4383-a9b9-84b7520783c2output-f3291447-18f3-4214-b135-9878a5d3bc2dc9f9e9d7-91c7-4a6d-8bc2-9975975578f6",
+          "source": "299d2c07-7888-4383-a9b9-84b7520783c2",
+          "sourceHandle": "output",
+          "target": "f3291447-18f3-4214-b135-9878a5d3bc2d",
+          "targetHandle": "c9f9e9d7-91c7-4a6d-8bc2-9975975578f6",
+          "data": {
+            "startColor": "#888",
+            "stopColor": "#D770AD"
+          },
           "__class__": "Edge"
         }
       ],
