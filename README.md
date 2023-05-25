@@ -10,13 +10,15 @@ From the **Projects** tab, click on **Import from git** and copy and paste the U
 
 ### STEP1: NLP and ingestion
 
-From the **Applications** tab install and run the following extensions:
+From the **Applications** tab install the following extensions:
 
 - <a href="https://github.com/loko-ai/loko_anonymizer">loko-anonymizer</a>
 - <a href="https://github.com/loko-ai/loko_translate">loko-translate</a>
 - <a href="https://github.com/loko-ai/zero_shot_ext">zero-shot-ext</a>
 - <a href="https://github.com/loko-ai/text_generation">text-generation</a>
 - <a href="https://github.com/loko-ai/mongo_extension">mongo-extension</a>
+
+<p align="center"><img src="https://github.com/Cecinamo/ner/assets/30443495/ddb802cc-d81e-471d-97ee-d2e2829b8fd2" width="80%" /></p>
 
 ---
 
@@ -37,7 +39,17 @@ models <a href="https://huggingface.co/models?pipeline_tag=zero-shot-classificat
 }
 ```
 
+Change the content of your file here:
+
+<p align="center"><img src="https://github.com/Cecinamo/ner/assets/30443495/90fb9048-603b-4c6c-976a-87385b34acad" width="80%" /></p>
+
+
 ---
+
+Now you can run your extensions:
+
+<p align="center"><img src="https://github.com/Cecinamo/ner/assets/30443495/eddf775f-83e0-41dc-9d3f-fedf2a2eaa8e" width="80%" /></p>
+
 
 You can then go back to your project and run it.
 
