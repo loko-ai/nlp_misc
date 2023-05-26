@@ -39,14 +39,14 @@ models <a href="https://huggingface.co/models?pipeline_tag=zero-shot-classificat
 }
 ```
 
-Change the content of your file here:
+Change the content of the *config.json* file here:
 
-<p align="center"><img src="https://github.com/Cecinamo/ner/assets/30443495/90fb9048-603b-4c6c-976a-87385b34acad" width="80%" /></p>
+<p align="center"><img src="https://github.com/Cecinamo/ner/assets/30443495/09e6d0dc-a970-41fe-8589-e932324c3a64" width="80%" /></p>
 
 
 ---
 
-Now you can run your extensions:
+Now you can run the previous extensions:
 
 <p align="center"><img src="https://github.com/Cecinamo/ner/assets/30443495/eddf775f-83e0-41dc-9d3f-fedf2a2eaa8e" width="80%" /></p>
 
